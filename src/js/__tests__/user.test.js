@@ -1,21 +1,25 @@
 import { userNpc } from '../user';
-import { user } from '../user';
 
 test("healsUser", () => {
-  const result = userNpc(user);
+  const result = userNpc({
+    name: 'Маг', 
+    health: 90
+  });
   expect(result).toBe("healthy");
 });
 
-/* не понял как создать 100% покрытие 
-const healthList = [
-  [90, "healthy"],
-  [43, "wounded"],
-  [13, "critical"]
-];
+test("healsUser", () => {
+  const result = userNpc({
+    name: 'Лучник', 
+    health: 10
+  });
+  expect(result).toBe("critical");
+});
 
-const handler = test.each(healthList);
-
-handler(healthTest, (_, amount, expected) => {
-  const result = userNpc(amount);
-  expect(result).toBe(expected);
-});   */
+test("healsUser", () => {
+  const result = userNpc({
+    name: 'Мечник', 
+    health: 35
+  });
+  expect(result).toBe("wounded");
+});
